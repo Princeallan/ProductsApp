@@ -8,11 +8,11 @@ const product = require('./routes/product.route')
 const app = express();
 
 const mongoose = require('mongoose');
-let dev_db_url = 'mongodb://someuser:abcd1234@ds155833.mlab.com:55833/productstutorial';
+let dev_db_url = mongoose.connect('mongodb://someuser:abcd1234@ds155833.mlab.com:55833/productstutorial', { useNewUrlParser: true });
 
-const mongoDB = process.env.MONGODB_URI || dev_db_url;
+// const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
-mongoose.connect(mongoDB);
+// mongoose.connect(mongoDB);
 
 mongoose.Promise = global.Promise;
 

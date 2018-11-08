@@ -21,6 +21,29 @@ exports.product_create = function (req, res){
 	})
 };
 
+exports.product_details = function(req, res) {
+	Product.findById(req.params.id, function(err, product){
+		if (err) 
+			return next(err);
+		res.send(product);
+	})
+};
+
+exports.product_update = function(req, res) {
+	Product.findOneAndUpdate(req.params.id, {$set : req.body}, function(err, product){
+		if (err) 
+			return next(err);
+		res.send('Product Succesfully updated!');
+	})
+};
+
+exports.product_delete = function(req, res){
+	Product.findOneAndDelete(req.params.id, function(err){
+		if (err) 
+			return next(err);
+		res.send('Product Deleted Succesfully');
+	})
+};
 
 // snap install postman
 // sudo apt install snapd
